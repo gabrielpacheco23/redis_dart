@@ -1,7 +1,6 @@
 name: redis_client
 version: 0.1.0
 description: A simple and minimalist Redis client for Dart.
-author: Gabriel N. Pacheco <gabrielpacheco23@live.com>
 homepage: https://github.com/gabrielpacheco23/redis_client
 
 environment:
