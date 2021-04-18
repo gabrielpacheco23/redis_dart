@@ -14,7 +14,7 @@ doc/api/
 
 # exe
 bin/
-test/
+#test/
 
 *_test
 *.swp
