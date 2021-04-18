@@ -1,6 +1,6 @@
 name: redis_dart
 version: 0.1.0+3
-description: A simple and minimalist Redis client for Dart.
+description: A simple, minimalist and easy to use Redis client for Dart.
 homepage: https://github.com/gabrielpacheco23/redis_client
 
 environment:
