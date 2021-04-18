@@ -1,5 +1,5 @@
 # 0.1.0+2
-- README typo fix
+- Add documentation comments
 
 # 0.1.0
 - Initial version.

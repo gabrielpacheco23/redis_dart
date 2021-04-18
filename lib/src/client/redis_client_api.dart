@@ -36,7 +36,7 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // SET - Set a key with a value
+  /// SET - Set a key with a value
   Future<RedisReply> set(String key, value) async {
     _socket.write(RespRequest(['SET', key, '$value']));
 
@@ -44,7 +44,7 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // SETRANGE - Set value at offset of a key
+  /// SETRANGE - Set value at offset of a key
   Future<RedisReply> setRange(String key, int offset, value) async {
     _socket.write(RespRequest(['SETRANGE', key, '$offset', '$value']));
 
@@ -52,7 +52,7 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // SETNX - Set a key with a value only if the key does not exist
+  /// SETNX - Set a key with a value only if the key does not exist
   Future<RedisReply> setNotExists(String key, value) async {
     _socket.write(RespRequest(['SETNX', key, value]));
 
@@ -60,7 +60,7 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // MSET - Set a list of keys with a list of values
+  /// MSET - Set a list of keys with a list of values
   Future<RedisReply> multiSet({
     required List<String> keys,
     required List values,
@@ -80,12 +80,12 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // GET - Get a value from a key
+  /// GET - Get a value from a key
   Future<RedisReply> get(String key) async {
     return command('GET $key');
   }
 
-  // GETRANGE - Get a range of a value of a key
+  /// GETRANGE - Get a range of a value of a key
   Future<RedisReply> getRange(String key, int start, int end) async {
     return command('GETRANGE $key $start $end');
   }
@@ -172,13 +172,13 @@ class RedisClient {
     return command('EXPIRE $key ${timeout.inSeconds}');
   }
 
-  // EXPIREAT - Expires a key with a DateTime
-  // (e.g. await client.expireAt('num', DateTime(2021, 4, 18))
+  /// EXPIREAT - Expires a key with a DateTime
+  /// (e.g. await client.expireAt('num', DateTime(2021, 4, 18))
   Future<RedisReply> expireAt(String key, DateTime dateTime) async {
     return command('EXPIREAT $key ${dateTime.millisecondsSinceEpoch ~/ 1000}');
   }
 
-  // HSET - Sets a Redis Hash (with a Dart Map)
+  /// HSET - Sets a Redis Hash (with a Dart Map)
   Future<RedisReply> setMap(String key, Map<String, dynamic> value) async {
     final queryList = [];
     final fields = value.keys.toList();
@@ -192,7 +192,7 @@ class RedisClient {
     return RedisReply(event);
   }
 
-  // HGETALL - Gets all the fields from a Hash (returning a Dart Map)
+  /// HGETALL - Gets all the fields from a Hash (returning a Dart Map)
   Future<RedisReply> getMap(String key) async {
     _socket.write(RespRequest(['HGETALL', key]));
 
@@ -201,12 +201,12 @@ class RedisClient {
     return RedisReply(map);
   }
 
-  // HGET - Gets a Hash field
+  /// HGET - Gets a Hash field
   Future<RedisReply> getField(String key, String field) async {
     return command('HGET $key $field');
   }
 
-  // HEXISTS - Checks if a Hash field exists
+  /// HEXISTS - Checks if a Hash field exists
   Future<RedisReply> existsField(String key, String field) async {
     _socket.write(RespRequest(['HEXISTS', key, field]));
 
@@ -215,7 +215,7 @@ class RedisClient {
     return RedisReply(event.content == 1 ? true : false);
   }
 
-  // HDEL - Deletes a field from a Hash
+  /// HDEL - Deletes a field from a Hash
   Future<RedisReply> deleteField(String key, String field,
       [List<String>? fields]) async {
     var query = '';
@@ -225,29 +225,29 @@ class RedisClient {
     return command('HDEL $key $field $query');
   }
 
-  // HINCRBY or HINCRBYFLOAT - Increments a field from a Hash (int or float)
+  /// HINCRBY or HINCRBYFLOAT - Increments a field from a Hash (int or float)
   Future<RedisReply> incrementFieldBy(
       String key, String field, num value) async {
     if (value is int) return command('HINCRBY $key $field $value');
     return command('HINCRBYFLOAT $key $field $value');
   }
 
-  // HKEYS - Gets the keys of a Hash
+  /// HKEYS - Gets the keys of a Hash
   Future<RedisReply> mapKeys(String key) {
     return command('HKEYS $key');
   }
 
-  // HLEN - Gets the length of a Hash
+  /// HLEN - Gets the length of a Hash
   Future<RedisReply> mapLength(String key) {
     return command('HLEN $key');
   }
 
-  // HVALS - Gets the values of a Hash
+  /// HVALS - Gets the values of a Hash
   Future<RedisReply> mapValues(String key) async {
     return command('HVALS $key');
   }
 
-  // LPUSH - Pushes a element or a list of them to the head (first)
+  /// LPUSH - Pushes a element or a list of them to the head (first)
   Future<RedisReply> pushFirst(String key, element, [List? elements]) async {
     var query = '';
     if (elements != null) {
@@ -256,7 +256,7 @@ class RedisClient {
     return command('LPUSH $key $element $query');
   }
 
-  // RPUSH - Pushes a element or a list of them to the tail (last)
+  /// RPUSH - Pushes a element or a list of them to the tail (last)
   Future<RedisReply> pushLast(String key, element, [List? elements]) async {
     var query = '';
     if (elements != null) {
@@ -265,44 +265,44 @@ class RedisClient {
     return command('RPUSH $key $element $query');
   }
 
-  // LPOP - Pops the first element of a list (head)
+  /// LPOP - Pops the first element of a list (head)
   Future<RedisReply> popFirst(String key, [int? count]) async {
     if (count != null) return command('LPOP $key $count');
     return command('LPOP $key');
   }
 
-  // RPOP - Pops the last element of a list (tail)
+  /// RPOP - Pops the last element of a list (tail)
   Future<RedisReply> popLast(String key, [int? count]) async {
     if (count != null) return command('RPOP $key $count');
     return command('RPOP $key');
   }
 
-  // LINDEX - Gets the element of a list at the index
+  /// LINDEX - Gets the element of a list at the index
   Future<RedisReply> elementAt(String key, int index) async {
     return command('LINDEX $key $index');
   }
 
-  // LINSERT BEFORE - Inserts in the list before a specified key
+  /// LINSERT BEFORE - Inserts in the list before a specified key
   Future<RedisReply> insertBefore(String key, before, value) async {
     return command('LINSERT $key BEFORE $before $value');
   }
 
-  // LINSERT AFTER - Inserts in the list after a specified key
+  /// LINSERT AFTER - Inserts in the list after a specified key
   Future<RedisReply> insertAfter(String key, after, value) async {
     return command('LINSERT $key AFTER $after $value');
   }
 
-  // LLEN - Gets the list length
+  /// LLEN - Gets the list length
   Future<RedisReply> listLength(String key) async {
     return command('LLEN $key');
   }
 
-  // LRANGE - Gets a list in a range
+  /// LRANGE - Gets a list in a range
   Future<RedisReply> listRange(String key, int start, int stop) async {
     return command('LRANGE $key $start $stop');
   }
 
-  // SADD - Adds a member or more to a Set
+  /// SADD - Adds a member or more to a Set
   Future<RedisReply> setAdd(String key, member, [List? members]) async {
     var query = '';
     if (members != null) {
@@ -311,23 +311,23 @@ class RedisClient {
     return command('SADD $key $member $query');
   }
 
-  // SMEMBERS - Gets the members of a Set
+  /// SMEMBERS - Gets the members of a Set
   Future<RedisReply> members(String key) async {
     return command('SMEMBERS $key');
   }
 
-  // SISMEMBER - Checks if a member exists in a Set
+  /// SISMEMBER - Checks if a member exists in a Set
   Future<RedisReply> isMember(String key, member) async {
     return command('SISMEMBER $key $member');
   }
 
-  // SPOP - Pops a random member from a Set
+  /// SPOP - Pops a random member from a Set
   Future<RedisReply> setPop(String key, [int? count]) async {
     if (count != null) return command('SPOP $key $count');
     return command('SPOP $key');
   }
 
-  // SREM - Removes a member of a Set
+  /// SREM - Removes a member of a Set
   Future<RedisReply> removeMember(String key, member, [List? members]) async {
     var query = '';
     if (members != null) {
@@ -336,12 +336,12 @@ class RedisClient {
     return command('SREM $key $member $query');
   }
 
-  // TTL - Gets the Time To Live (ttl) of a key with expiry
+  /// TTL - Gets the Time To Live (ttl) of a key with expiry
   Future<RedisReply> timeToLive(String key) async {
     return command('TTL $key');
   }
 
-  // Closes the connection
+  /// Closes the connection
   Future<void> close() async {
     await _queue.cancel();
     await _socket.close();
