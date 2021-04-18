@@ -1,5 +1,5 @@
 name: redis_dart
-version: 0.1.0+1
+version: 0.1.0+2
 description: A simple and minimalist Redis client for Dart.
 homepage: https://github.com/gabrielpacheco23/redis_client
 

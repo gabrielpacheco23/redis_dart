@@ -4,6 +4,8 @@ A simple and minimalist Redis client for Dart
 See it in pub: https://pub.dev/packages/redis_client \
 and GitHub: https://github.com/gabrielpacheco23/redis_client
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q04C63Q)
+
 # Usage 
 
 ```dart
@@ -63,6 +65,9 @@ This library still does not covers the full features of Redis, so things like Pu
 - Implement Transactions
 - Implement Pub/Sub
 - Maybe some other things
+
+# Support my work :)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q04C63Q)
 
 # License
 MIT License
