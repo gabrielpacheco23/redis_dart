@@ -1,15 +1,15 @@
 # redis_dart
 A simple and minimalist Redis client for Dart
 
-See it in pub: https://pub.dev/packages/redis_client \
-and GitHub: https://github.com/gabrielpacheco23/redis_client
+See it in pub: https://pub.dev/packages/redis_dart \
+and GitHub: https://github.com/gabrielpacheco23/redis_dart
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q04C63Q)
 
 # Usage 
 
 ```dart
-import 'package:redis_client/redis_client.dart';
+import 'package:redis_dart/redis_dart.dart';
 
 void main() async {
   final client = await RedisClient.connect('localhost');
@@ -52,7 +52,7 @@ which returns a ```Map``` and then prints
 That way, inserting a Redis Hash is as simple as passing a Dart ```Map```. 
 
 # API
-For full API documentation take a look at https://pub.dev/documentation/redis_client/latest/
+For full API documentation take a look at https://pub.dev/documentation/redis_dart/latest/
 
 
 Also, check out the ```examples``` directory.
