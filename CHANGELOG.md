@@ -1,4 +1,5 @@
-# 0.1.0+3
+# 0.1.0+4
+- Refactor code to prevent whitespace bug
 - Provide examples
 - Add documentation comments
 
