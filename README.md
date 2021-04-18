@@ -51,7 +51,8 @@ That way, inserting a Redis Hash is as simple as passing a Dart ```Map```.
 
 # API
 For full API documentation take a look at https://pub.dev/documentation/redis_client/latest/
-&nbsp;
+
+
 Also, check out the ```examples``` directory.
 
 # Contribute!
