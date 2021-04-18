@@ -43,7 +43,7 @@ void main() async {
 ```
 which returns a ```Map``` and then prints
 
-```C#
+```
   {name: John Doe, email: john@doe.com, age: 34}
 ```
 
