@@ -1,4 +1,4 @@
-import 'package:redis_client/redis_client.dart';
+import 'package:redisclient/redisclient.dart';
 
 void main() async {
   final client = await RedisClient.connect('localhost');

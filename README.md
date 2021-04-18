@@ -1,4 +1,4 @@
-# redis_client
+# redis_dart
 A simple and minimalist Redis client for Dart
 
 See it in pub: https://pub.dev/packages/redis_client \

@@ -1,4 +1,4 @@
-import 'package:redis_client/src/resp/resp_types.dart';
+import 'package:redis_dart/src/resp/resp_types.dart';
 
 abstract class RespObject {
   late String identifier;

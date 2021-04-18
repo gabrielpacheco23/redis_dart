@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:async/async.dart';
-import 'package:redis_client/src/resp/resp_object.dart';
+import 'package:redis_dart/src/resp/resp_object.dart';
 
 import 'redis_reply.dart';
 import '../resp/resp_request.dart';
