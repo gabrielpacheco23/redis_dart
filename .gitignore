@@ -1,0 +1,23 @@
+# Files and directories created by pub
+.dart_tool/
+.packages
+.pub/
+build/
+.vscode/
+pubspec.lock
+*.iml
+analysis_options.yaml
+
+# Directory created by dartdoc
+# If you don't generate documentation locally you can remove this line.
+doc/api/
+
+# exe
+bin/
+test/
+
+*_test
+*.swp
+
+# test code
+lib/src/test_client.dart
